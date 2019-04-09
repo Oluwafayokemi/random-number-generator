@@ -1,7 +1,17 @@
 import React from 'react';
-import RandomNumber from './components/randomNumber/randomNumber';
+import styled from 'styled-components';
+import Header from './components/randomNumber/Header';
+import GenerateNewNumber from './components/randomNumber/GeneratNewNumber';
 
-const App = () =>(
-  <RandomNumber />
+const App = () => (
+  <Main>
+    <Header />
+    <GenerateNewNumber />
+  </Main>
 )
+
+const Main = styled.div`
+  padding: 0;
+`;
+
 export default App;
