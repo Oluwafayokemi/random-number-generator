@@ -11,22 +11,21 @@ const DEFAULTVALUE = 100
 class GenerateNewNumber extends React.Component {
   state = {
     value: '',
-    list: []
+    selectedOption: '',
+    list: [],
   }
+
   componentDidMount() {
-    const listNumber = this.generateNumber(MINNUMBER, MAXNUMBER, DEFAULTVALUE)
-    this.setState({ value: DEFAULTVALUE, list: listNumber })
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const nextState = this.state.list
-    if (prevState.list !== nextState) {
-
-    }
+    this.setState({ value: DEFAULTVALUE })
+    this.generateNumber(MINNUMBER, MAXNUMBER, DEFAULTVALUE)
   }
 
   handleChange = (event) => {
     this.setState({ value: event.target.value });
+  }
+
+  handleSelectChange = (selectedOption) => {
+    this.setState({ selectedOption })
   }
 
   handleSubmit = (event) => {
@@ -35,70 +34,126 @@ class GenerateNewNumber extends React.Component {
     this.generateNumber(MINNUMBER, MAXNUMBER, value)
   }
 
-  generateNumber = (min, max, iterate) => {
-    var newNumber = [];
-    for (var i = 0; i < iterate; i++) {
-      newNumber.push(Math.floor(Math.random() * max) + min);
+  sortList = (numberList) => {
+    const { list, selectedOption } = this.state;
+    const arrayList = numberList || list
+    const sortNumber = (a, b) => {
+      const isAscending = selectedOption.value === 1
+      return isAscending ? a - b : b - a;
     }
-    this.setState({ list: newNumber })
-    return newNumber;
+    const newList = arrayList.sort(sortNumber)
+    return newList
   }
 
+  generateNumber = (min, max, iterate) => {
+    const {selectedOption} = this.state;
+    let newNumber = [];
+    for (let i = 0; i < iterate; i++) {
+      newNumber.push(Math.floor(Math.random() * max) + min);
+    }
+    newNumber = !selectedOption ? newNumber : this.sortList(newNumber)
+    this.setState({ list: newNumber })
+  }
 
   render() {
     const { list, value } = this.state;
     return (
-      <React.Fragment>
-        <p>Generate Number:</p>
-        <Form onSubmit={this.handleSubmit}>
-          <FormWrapper>
-            <NumberInput
-              className="wrapper"
-              name="number"
-              placeholder={NUMBERPLACEHOLDER}
-              onChange={this.handleChange}
-              value={value}
-            />
-            <DefaultSelect />
-            <Download>
-            </Download>
-          </FormWrapper>
-          <Input type="submit" />
-        </Form>
-        <ListRandomNumber list={list} />
-      </React.Fragment>
+      <Div>
+        <Container>
+          <span className="par">Generate Number:</span>
+          <Form onSubmit={this.handleSubmit}>
+            <FormWrapper>
+              <NumberInput
+                className="wrapper"
+                name="number"
+                placeholder={NUMBERPLACEHOLDER}
+                onChange={this.handleChange}
+                value={value}
+              />
+              <Selector >
+                <DefaultSelect onChange={this.handleSelectChange} placeholder="Select Order" />
+              </Selector>
+              <Download>
+                <Input type="file" />
+              </Download>
+            </FormWrapper>
+            <Input type="submit" />
+          </Form>
+        </Container>
+        <List>
+          <Hr />
+          <span>Computed Numbers</span>
+          <ListRandomNumber list={list} />
+        </List>
+      </Div>
     )
   }
 }
+
+const Hr = styled.hr`
+  border: 1px solid #ccc;
+
+ `;
+const Container = styled.div`
+  height: 250px;
+`;
+const Div = styled.div`
+  padding: 1em;
+  max-height: 100%;
+  max-width: 100%;
+  
+`;
+
+const List = styled.div`
+    align-items: center;
+
+  span{
+    background-color: #fff;
+    width: 300px;
+    padding: 8px;
+    margin-left: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+`;
+const Selector = styled.div`
+    width: 20%;
+    padding-left:1em;
+    
+`;
 const FormWrapper = styled.div`
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: space-between;
-  .wrapper {
+  flex-flow: row nowrap;
+  width: 80%;
+    .wrapper {
     border-radius: 4px;
     width: auto;
     border: 2px solid blue;
-    margin-right: 1em;
-
   }
   .wrapper:focus {
     outline: none;
   }
 `;
 const Form = styled.form`
-  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  background-image:url(https://www.desktopbackground.org/p/2012/11/21/487004_moneymap-calculate-cloud_1920x1080_h.jpg); 
+  background-repeat: repeat-x; 
+  background-size: cover; /* Resize the background image to cover the entire container */
+  border-radius: 5px;
 `;
 const Input = styled.input`
-  width: 100%;
   cursor: pointer;
-    margin-top: 1em;
-    padding: 5px 1px;
-   background-color: blue;
-    color: white;
-    font-weight: bold;
+  padding: 5px 1px;
+  background-color: blue;
+  color: white;
+  font-weight: bold;
+  position: relative;
+  margin-left: 1em;
 `;
 const Download = styled.div`
-  width: 50px
+  width: 10px
 `;
+
 export default GenerateNewNumber;
