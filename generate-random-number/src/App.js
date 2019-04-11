@@ -14,7 +14,6 @@ const App = () => (
 const Main = styled.div`
   padding: 0 1em;
   margin: 0 1em;
-  background-color: #ffffff;
   border-radius: 8px;
 `;
 

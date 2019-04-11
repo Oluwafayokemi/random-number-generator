@@ -1,13 +1,10 @@
 body {
-  margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* background-image:url(https://www.desktopbackground.org/p/2012/11/21/487004_moneymap-calculate-cloud_1920x1080_h.jpg);  */
-  
+  -moz-osx-font-smoothing: grayscale
 }
 
 code {
