@@ -18,8 +18,7 @@ const Header = () => (
 )
 
 const Main = styled.div`
-    background-color: #F5CCCC;
-    height: 150px;
+    /* height: 150px; */
     padding: 0;
 `;
 const Font = styled.p`

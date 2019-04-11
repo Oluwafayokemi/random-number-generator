@@ -10,8 +10,9 @@ const ListRandomNumber = ({ list }) => {
         {list && list.map((list, index) => {
           return (
             <NumberInput
+              readOnly
               className="wrapper"
-              defaultValue={PREVALUE + list}
+              value={PREVALUE + list}
               key={index}
             />
           )
@@ -21,16 +22,21 @@ const ListRandomNumber = ({ list }) => {
     </Wrapper>
   )
 }
+
 const Wrapper = styled.div`
   display: flex;
-  align-items: flex-end;
-  flex-flow: column wrap;
+  align-items: center;
   max-height: 100%;
   max-width: 100%;
-  border: 2px solid blue;
-  margin-top: 1em;
-  padding: 1em;
+  background-image:url(https://www.desktopbackground.org/p/2012/11/21/487004_moneymap-calculate-cloud_1920x1080_h.jpg);
+  background-color: #cccccc; /* Used if the image is unavailable */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */ 
+  border-radius: 5px;
+  padding: 3em;
   .wrapper {
+    
     border-radius: 4px;
     height: 20px;
     border: 2px solid blue;
@@ -43,10 +49,9 @@ const Wrapper = styled.div`
   }
 `;
 const Main = styled.div`
-  align-items: flex-start;
-  align-content: space-between;
-  padding-right: 1.5em;
+  /* align-content: space-between; */
+  align-items: center;
   text-align: right;
-`
+`;
 
 export default ListRandomNumber;

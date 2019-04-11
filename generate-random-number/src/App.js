@@ -7,11 +7,15 @@ const App = () => (
   <Main>
     <Header />
     <GenerateNewNumber />
+    
   </Main>
 )
 
 const Main = styled.div`
-  padding: 0;
+  padding: 0 1em;
+  margin: 0 1em;
+  background-color: #ffffff;
+  border-radius: 8px;
 `;
 
 export default App;
