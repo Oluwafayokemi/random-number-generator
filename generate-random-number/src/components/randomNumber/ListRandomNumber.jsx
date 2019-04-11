@@ -25,8 +25,8 @@ const ListRandomNumber = ({ list }) => {
 
 const Wrapper = styled.div`
   display: flex;
-  align-items: center;
-  max-height: 100%;
+  max-height: 80vh;
+  overflow: scroll;
   max-width: 100%;
   background-image:url(https://www.desktopbackground.org/p/2012/11/21/487004_moneymap-calculate-cloud_1920x1080_h.jpg);
   background-color: #cccccc; /* Used if the image is unavailable */
@@ -34,13 +34,13 @@ const Wrapper = styled.div`
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */ 
   border-radius: 5px;
-  padding: 3em;
+  padding: 2em;
   .wrapper {
-    
+    box-shadow: 0 4px 8px 0 #fff, 0 6px 20px 0 rgba(0,0, 0, 0.2);
     border-radius: 4px;
     height: 20px;
-    border: 2px solid blue;
-    margin: 2px;
+    border: none;
+    margin: 3px;
     width: 80px;
     padding: 3px;
   }
@@ -49,9 +49,7 @@ const Wrapper = styled.div`
   }
 `;
 const Main = styled.div`
-  /* align-content: space-between; */
-  align-items: center;
-  text-align: right;
+
 `;
 
 export default ListRandomNumber;
