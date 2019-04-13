@@ -7,18 +7,16 @@ const OPTIONS = [
   { label: "Ascending", value: 1 },
   { label: "Descending", value: 2 },
 ]
-const DefaultSelect = (props) => (
+const DefaultSelect = (props) => {
+  const {selectClassName} = props;
+  return (
   <Wrapper>
-    <Select {...props} options={OPTIONS} className="selected" />
+    <Select {...props} options={OPTIONS} className={selectClassName} />
   </Wrapper>
 )
+}
 
 const Wrapper = styled.div`
-    .css-xp4uvy{
-      cursor: pointer;
-    }
-    .selected{
-      cursor: pointer;
-    }
+    
 `;
 export default DefaultSelect;
