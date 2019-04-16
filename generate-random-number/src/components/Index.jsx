@@ -72,8 +72,8 @@ class Index extends React.Component {
       const isAscending = selectedOption.value === 1
       return isAscending ? a - b : b - a;
     }
+    toastr.success('Random phone number geneated successfully', 'Success')
     const newList = arrayList.sort(sortNumber)
-    console.log(newList, selectedOption, '!!!!!nw')
     return newList
   }
 
@@ -87,17 +87,14 @@ class Index extends React.Component {
   generateNumber = (min, max, iterate) => {
     const { selectedOption } = this.state;
     let newNumber = [];
-    let numWithZeroIndex = []
-    for (let i = 0; i < iterate; i++) {
-      newNumber.push(Math.floor(Math.random() * max) + min);
+    if (iterate > 1000) {
+      return toastr.error('You can only download a maximum of 1000 file at a time', 'Size too large')
     }
-    // Begin every number with a zero index
-    newNumber.map(number => {
-      number = '0' + number 
-      numWithZeroIndex.push(number);
-    })
-    this.findOrder(numWithZeroIndex)
-    newNumber = !selectedOption ? numWithZeroIndex : this.sortList(numWithZeroIndex)
+    for (let i = 0; i < iterate; i++) {
+      newNumber.push(`0${Math.floor(Math.random() * max) + min}`);
+    }
+    this.findOrder(newNumber);
+    newNumber = !selectedOption ? newNumber : this.sortList(newNumber)
     this.setState({ list: newNumber })
   }
 
@@ -108,11 +105,8 @@ class Index extends React.Component {
   onClickSaveFile = () => {
     const { list } = this.state;
     let file = new File([list], "Random Number.txt", { type: "text/plain;charset=utf-8" });
-    if (file.size > 9999) {
-      return toastr.error('You can only download a maximum of 1000 file at a time', 'Size too large')
-    }
     saveAs(file)
-    return toastr.success('Your generated phone numbers are now available in your file', 'Success')
+    toastr.success('Your generated phone numbers are now available in your file', 'Success')
   }
 
   /**
@@ -120,12 +114,19 @@ class Index extends React.Component {
    * @description onCLick reloads the page
    */
   reload = () => {
-    document.location.reload(true)
+    this.setState({
+      value: '',
+      selectedOption: '',
+      list: '',
+      maxPhoneNumber: '',
+      minPhoneNumber: ''
+    })
+   
   }
 
   render() {
     const { handleSubmit, handleSelectChange, handleChange, reload, onClickSaveFile } = this;
-    const { value, list, maxPhoneNumber, minPhoneNumber } = this.state;
+    const { value, list, maxPhoneNumber, minPhoneNumber, selectedOption } = this.state;
     return (
       <Container>
         <Description />
@@ -134,6 +135,7 @@ class Index extends React.Component {
           handleChange={handleChange}
           handleSelectChange={handleSelectChange}
           value={value}
+          selectedOption={selectedOption}
         />
         <Summary
           list={list}

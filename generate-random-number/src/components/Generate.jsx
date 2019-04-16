@@ -19,7 +19,7 @@ const GENERATE = "Generate";
  * @description total numbers in order
  * @returns {ReactElement}
  */
-const Generate = ({handleSubmit, handleChange, value, handleSelectChange}) => (
+const Generate = ({handleSubmit, handleChange, value, handleSelectChange, selectedOption}) => (
   <form onSubmit={handleSubmit}>
     <Container>
       <InputWrapper>
@@ -28,7 +28,7 @@ const Generate = ({handleSubmit, handleChange, value, handleSelectChange}) => (
       </InputWrapper>
       <SelectWrapper>
         <span>{ORDER}</span>
-        <DefaultSelect selectClassName="select" placeholder={SELECT} onChange={handleSelectChange} />
+        <DefaultSelect selectClassName="select" placeholder={SELECT} onChange={handleSelectChange} value={selectedOption} />
       </SelectWrapper>
     </Container>
     <Button type="submit">{GENERATE}</Button>
