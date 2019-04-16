@@ -14,14 +14,15 @@ import toastr from 'toastr';
 // Const
 const MINNUMBER = 99999999;
 const MAXNUMBER = 100000000;
+const STATE = {
+  value: '',
+  selectedOption: '',
+  list: '',
+  maxPhoneNumber: '',
+  minPhoneNumber: ''
+}
 class Index extends React.Component {
-  state = {
-    value: '',
-    selectedOption: '',
-    list: '',
-    maxPhoneNumber: '',
-    minPhoneNumber: ''
-  }
+  state = STATE
 
   /**
    * @method handleChange
@@ -88,7 +89,7 @@ class Index extends React.Component {
     const { selectedOption } = this.state;
     let newNumber = [];
     if (iterate > 1000) {
-      return toastr.error('You can only download a maximum of 1000 file at a time', 'Size too large')
+      return toastr.error('You can only generate a maximum of 1000 numbers at a time', 'Size too large')
     }
     for (let i = 0; i < iterate; i++) {
       newNumber.push(`0${Math.floor(Math.random() * max) + min}`);
@@ -102,10 +103,10 @@ class Index extends React.Component {
    * @method onClickSaveFile
    * @description downloads the list of array to file
    */
-  onClickSaveFile = () => {
+  onClickSaveFile = async() => {
     const { list } = this.state;
     let file = new File([list], "Random Number.txt", { type: "text/plain;charset=utf-8" });
-    saveAs(file)
+    await saveAs(file)
     toastr.success('Your generated phone numbers are now available in your file', 'Success')
   }
 
@@ -125,8 +126,8 @@ class Index extends React.Component {
   }
 
   render() {
-    const { handleSubmit, handleSelectChange, handleChange, reload, onClickSaveFile } = this;
-    const { value, list, maxPhoneNumber, minPhoneNumber, selectedOption } = this.state;
+    const { handleSubmit, handleSelectChange, handleChange, reload, onClickSaveFile, state } = this;
+    const { value, list, maxPhoneNumber, minPhoneNumber, selectedOption } = state;
     return (
       <Container>
         <Description />
