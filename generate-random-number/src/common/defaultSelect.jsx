@@ -1,22 +1,34 @@
+/**
+ * @file select option
+ */
+
+//  Modules
 import React from 'react';
 import Select from 'react-select';
-import styled from 'styled-components';
 
-
+// Const
 const OPTIONS = [
   { label: "Ascending", value: 1 },
   { label: "Descending", value: 2 },
 ]
+
+/**
+ * @function DefaultSelect
+ * @param {Object} props 
+ * @description displays select button
+ */
 const DefaultSelect = (props) => {
-  const {selectClassName} = props;
+  const { selectClassName } = props;
   return (
-  <Wrapper>
-    <Select {...props} options={OPTIONS} className={selectClassName} />
-  </Wrapper>
-)
+    <React.Fragment>
+      <Select
+        {...props}
+        classNamePrefix='list'
+        options={OPTIONS}
+        className={selectClassName}
+      />
+    </React.Fragment>
+  )
 }
 
-const Wrapper = styled.div`
-    
-`;
 export default DefaultSelect;

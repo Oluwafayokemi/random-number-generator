@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 /**
  * @function ActionButton
  * @description displays button to clear and download
+ * @param {Object} props - reload: function, onClickSaveFile: function
  * @returns {ReactElement}
  */
 const ActionButton = ({reload, onClickSaveFile}) => (
