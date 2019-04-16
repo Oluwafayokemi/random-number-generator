@@ -1,20 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import Header from './components/randomNumber/Header';
-import GenerateNewNumber from './components/randomNumber/GeneratNewNumber';
+import Header from './components/Header';
+import Index from './components/Index';
 
 const App = () => (
   <Main>
     <Header />
-    <GenerateNewNumber />
-    
+    <Index />
   </Main>
 )
 
 const Main = styled.div`
-  padding: 0 1em;
-  margin: 0 1em;
-  border-radius: 8px;
+
 `;
 
 export default App;
