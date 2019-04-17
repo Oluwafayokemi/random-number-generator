@@ -6,7 +6,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import NumberInput from '../common/Input';
-import DefaultSelect from '../common/defaultSelect';
+import DefaultSelect from '../common/DefaultSelect';
 
 // Const
 const TOTALNUMBER = "Total numbers to generate";
@@ -17,7 +17,9 @@ const GENERATE = "Generate";
 /**
  * @function Generate
  * @description total numbers in order
+ * @param {Object} props - handleSubmit: function, handleChange: function, value: number, handleSelectChange: function, selectedOption: string
  * @returns {ReactElement}
+ * 
  */
 const Generate = ({handleSubmit, handleChange, value, handleSelectChange, selectedOption}) => (
   <form onSubmit={handleSubmit}>

@@ -14,6 +14,7 @@ const MIN = "Min number";
 /**
  * @function Summary
  * @description summary of total numbers generated, max number and min number
+ * @param {Object} props - list: Array, maxphoneNumber: number, minPhoneNumber: number
  * @returns {ReactElement}
  */
 const Summary = ({ list, maxPhoneNumber, minPhoneNumber }) => {
