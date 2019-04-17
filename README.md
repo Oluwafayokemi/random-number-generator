@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/Oluwafayokemi/random-number-generator.svg?branch=develop)](https://travis-ci.com/Oluwafayokemi/random-number-generator)
+[![Coverage Status](https://coveralls.io/repos/github/Oluwafayokemi/random-number-generator/badge.svg?branch=develop)](https://coveralls.io/github/Oluwafayokemi/random-number-generator?branch=develop)
 # random-number-generator
 ### Brief Description
     Random Number Generator is an app that generates random 10 digit phone numbers.
