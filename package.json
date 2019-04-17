@@ -22,8 +22,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "coverage": "CI=true react-scripts test --env=jsdom --coverage --color --collectCoverageFrom=src/**/*jsx --collectCoverageFrom=!src/path/to/file",
+    "coverage": "npm test -- --coverage",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*jsx"
+    ],
+    "coverageReporters": ["text"]
   },
   "eslintConfig": {
     "extends": "react-app"
