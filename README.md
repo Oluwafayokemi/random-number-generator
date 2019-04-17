@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/Oluwafayokemi/random-number-generator.svg?branch=develop)](https://travis-ci.com/Oluwafayokemi/random-number-generator)
+
 # random-number-generator
 ### Brief Description
     Random Number Generator is an app that generates random 10 digit phone numbers.

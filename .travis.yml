@@ -2,12 +2,14 @@ language: node_js
 
 node_js:
   - stable
-dist: trusty
-
-addons:
-  chrome: stable
+env:
+  - CI=true
+cache:
+  directories:
+    - node_modules
 
 script:
+  - npm run build
   - npm test
 
 after_script:
