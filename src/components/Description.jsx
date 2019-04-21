@@ -7,7 +7,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 // Const
-const DESCRIPTION = "To generate random numbers, enter the amount of numbers to generate and the order. Note: You can only generate a maximum of 1000 numbers at a time"
+const DESCRIPTION = "To generate random phone numbers, enter the amount of numbers to generate and the order. Note: You can only generate a maximum of 1000 phone numbers at a time"
 
 /**
  * @function Description

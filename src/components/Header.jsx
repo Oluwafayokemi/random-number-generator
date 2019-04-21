@@ -7,8 +7,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 // Const
-const HEADERTITLE = "Random Number Generator";
-const LOGO = "RG";
+const HEADERTITLE = "Random Phone Number Generator";
+const LOGO = "RPG";
 
 /**
  * @function Header
