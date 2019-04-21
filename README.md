@@ -8,7 +8,7 @@
  -  Optional: Specify the order, either ascending or descending
 
 ### Screen Shot
-![gif-screenshot!](http://recordit.co/i9NU9tb1tg.gif)
+![gif-screenshot!](http://recordit.co/jDcRqHXBxI.gif)
 
 ### How can this be manually tested?
  - Clone the app by running `git clone https://github.com/Oluwafayokemi/random-number-generator.git` on your terminal
